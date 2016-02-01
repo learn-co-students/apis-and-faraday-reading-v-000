@@ -14,3 +14,5 @@
   * Explain what happens when you have the wrong url and it just times out
   * Explain what happens when you ahve the wrong url, but it responds with a
     non 200 error code
+  * integrate faraday stuff into a rails app and show them a list of repos.
+  * No OAuth!
