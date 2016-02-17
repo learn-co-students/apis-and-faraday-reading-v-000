@@ -146,8 +146,8 @@ can use in Ruby. We'll do that with the built-in `JSON.parse` method:
       req.params['query'] = 'coffee shop'
     end
 
-    body = JSON.parse(@resp.body)
-    @venues = body["response"]["venues"]
+    body_hash = JSON.parse(@resp.body)
+    @venues = body_hash["response"]["venues"]
     render 'search'
 ```
 
@@ -307,24 +307,25 @@ we set it to `0`, we can make it timeout to test our error handling:
 ```ruby
 # searches_controller.rb
 # ...
-  @resp = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
-      req.params['client_id'] = client_id
-      req.params['client_secret'] = client_secret
-      req.params['v'] = '20160201'
-      req.params['near'] = params[:zipcode]
-      req.params['query'] = 'coffee shop'
-      req.options.timeout = 0
-    end
-    body = JSON.parse(@resp.body)
-    if @resp.success?
-      @venues = body["response"]["venues"]
-    else
-      @error = body["meta"]["errorDetail"]
-    end
+  begin
+    @resp = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
+        req.params['client_id'] = client_id
+        req.params['client_secret'] = client_secret
+        req.params['v'] = '20160201'
+        req.params['near'] = params[:zipcode]
+        req.params['query'] = 'coffee shop'
+        req.options.timeout = 0
+      end
+      body = JSON.parse(@resp.body)
+      if @resp.success?
+        @venues = body["response"]["venues"]
+      else
+        @error = body["meta"]["errorDetail"]
+      end
 
     rescue Faraday::TimeoutError
       @error = "There was a timeout. Please try again."
-
+    end
     render 'search'
 ```
 
