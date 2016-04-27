@@ -4,3 +4,24 @@
   <%= text_field_tag :zipcode %>
   <%= submit_tag "Search!" %>
 <% end %>
+
+<div>
+  <% if @errors %>
+    <%= @error %>
+  <% else %>
+
+    <ul>
+    <% @venues.each do |venue| %>
+      <li>
+        <h5><%= venue['name'] %></h5>
+        <% venue['location']['formattedAddress'].each do |address_line| %>
+          <%= address_line %>
+        <% end %>
+
+        <h5>Checkins: <%= venue['stats']['checkinsCount'] %></h5>
+      </li>
+    <% end %>
+    </ul>   
+
+  <% end %>
+</div>
