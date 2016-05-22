@@ -5,8 +5,8 @@ class SearchesController < ApplicationController
   def foursquare
     begin
     @resp = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
-      req.params['client_id'] = 'FTTERCY5TU5AMVDHHOUQIKPZGOLBENMRJQWFDNND2S2CLPMC'
-      req.params['client_secret'] = 'SSQ3A1AWFZ2Q42HTOJWNR2LLMITGDAZLOKNQ50DSP2VIF0FV'
+      req.params['client_id'] = 'client_id'
+      req.params['client_secret'] = 'client_secret'
       req.params['v'] = '20160201'
       req.params['near'] = params[:zipcode]
       req.params['query'] = 'coffee shop'
