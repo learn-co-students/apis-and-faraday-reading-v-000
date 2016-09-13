@@ -48,7 +48,7 @@ Our `searches/search.html.erb` is already set up to post a `:zipcode` param to o
 
 Let's break this down. We use `Faraday.get(url)` to make a `request` to the API endpoint.
 
-We know we need to set some `params` from our tests in Postman, and Faraday gives us an easy way to do this by passing a block to the `get` method and adding any parameters we need through the request object via a hash of `params`, very similar to the way use use params in Rails.
+We know we need to set some `params` from our tests in Postman, and Faraday gives us an easy way to do this by passing a block to the `get` method and adding any parameters we need through the request object via a hash of `params`, very similar to the way we use params in Rails.
 
 To keep it simple, we're just going to render the `search` template again with the result.
 
@@ -280,3 +280,5 @@ Now let's delete that `req.options.timeout = 0` line, because we would never wan
 We've seen how to use Faraday to consume the Foursquare API from within our Rails app, how to use the documentation to parse the response, and how to handle for common errors. Time to celebrate!
 
 ![winston happy](http://i.giphy.com/l2JIdnF6aJnAqzDgY.gif)
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/apis-and-faraday-reading'>Hitting APIs with Faraday</a> on Learn.co and start learning to code for free.</p>
