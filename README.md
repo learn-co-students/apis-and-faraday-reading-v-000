@@ -91,7 +91,7 @@ And in our template, let's take a look at that response `body`.
   <%= submit_tag "Search!" %>
 <% end %>
 <div>
-  <%= @resp.body%>
+  <%= @resp.body if @resp %>
 </div>
 ```
 
