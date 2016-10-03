@@ -129,7 +129,7 @@ So lets get those `venues` out of this JSON object and into a thing we can use i
 
 So we parse the `body` of the response into a variable called `body_hash`, which is now a Ruby `Hash`. We can then access the `venues` under the `response` key.
 
-In our `search.html.erb`, we can change `<%= @resp.body %>` to `<%= @venues %>` and re-run our search, and we can see the venues are now represented as an `Array` of `Hash`es that we can further parse.
+In our `search.html.erb`, we can change `<%= @resp.body if @resp %>` to `<%= @venues %>` and re-run our search, and we can see the venues are now represented as an `Array` of `Hash`es that we can further parse.
 
 We'll look at the documentation again and decide what fields we want, and come up with something like this:
 
