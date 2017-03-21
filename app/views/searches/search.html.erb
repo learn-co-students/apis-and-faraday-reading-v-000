@@ -2,5 +2,20 @@
 <%= form_tag '/search' do %>
   <%= label_tag :zipcode %>
   <%= text_field_tag :zipcode %>
+  <!-- will route to  post '/search', to: 'searches#foursquare' -->
   <%= submit_tag "Search!" %>
 <% end %>
+
+<div class="">
+  <% if @error %>
+    <p><%= @error %></p>
+  <% elsif @venues %>
+    <ul>
+      <% @venues.each do |venue| %>
+        <%= venue['name'] %><br>
+        <%= venue['location']['address'] %><br>
+        Checkins: <%= venue['stats']['checkinsCount'] %>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
