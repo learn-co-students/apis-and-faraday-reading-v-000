@@ -265,7 +265,7 @@ Luckily, we can also force a timeout by setting the request's `timeout` value. N
         @error = body["meta"]["errorDetail"]
       end
 
-    rescue Faraday::TimeoutError
+    rescue Faraday::ConnectionFailed
       @error = "There was a timeout. Please try again."
     end
     render 'search'
