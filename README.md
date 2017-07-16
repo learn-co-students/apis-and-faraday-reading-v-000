@@ -1,10 +1,10 @@
-# APIs And Faraday
+# APIs and Faraday
 
 ## Objectives
 
-  * Send `GET` requests to an API
-  * Translate api requests in Postman to api requests with Faraday
-  * Handle the response of a request
+* Send `GET` requests to an API
+* Translate api requests in Postman to api requests with Faraday
+* Handle the response of a request
 
 ## Lesson
 
@@ -22,7 +22,7 @@ We're going to use [Faraday](https://github.com/lostisland/faraday) to access th
 
 Faraday is an HTTP client library that abstracts and standardizes some lower-level HTTP functions and makes it easy to build requests and get responses from an API.
 
-**Advanced:** In this lesson, and indeed in most cases, you'll use the built-in [Net::HTTP](http://ruby-doc.org/stdlib-2.3.0/libdoc/net/http/rdoc/Net/HTTP.html) library for HTTP functions. However, other libraries offer different advantages in categories like performance ([Patron](http://toland.github.io/patron/)) or multi-threading capability ([Typhoeus](https://github.com/typhoeus/typhoeus#readme)). Using a library like Faraday, that wraps and abstracts these lower-level libraries, allows you to maintain the same client code even if you change the underlying library later.
+**Advanced:** In this lesson, and indeed in most cases, you'll use the built-in [Net::HTTP](http://ruby-doc.org/stdlib-2.3.0/libdoc/net/http/rdoc/Net/HTTP.html) library for HTTP functions. However, other libraries offer different advantages in categories like performance ([Patron](http://toland.github.io/patron/)) or multi-threading capability ([Typhoeus](https://github.com/typhoeus/typhoeus#readme)). Using a library like Faraday, which wraps and abstracts these lower-level libraries, allows you to maintain the same client code even if you change the underlying library later.
 
 Add Faraday to the `Gemfile` and run `bundle install`:
 
@@ -91,7 +91,7 @@ And in our template, let's take a look at that response `body`.
   <%= submit_tag "Search!" %>
 <% end %>
 <div>
-  <%= @resp.body%>
+  <%= @resp.body if @resp %>
 </div>
 ```
 
@@ -129,7 +129,7 @@ So lets get those `venues` out of this JSON object and into a thing we can use i
 
 So we parse the `body` of the response into a variable called `body_hash`, which is now a Ruby `Hash`. We can then access the `venues` under the `response` key.
 
-In our `search.html.erb`, we can change `<%= @resp.body %>` to `<%= @venues %>` and re-run our search, and we can see the venues are now represented as an `Array` of `Hash`es that we can further parse.
+In our `search.html.erb`, we can change `<%= @resp.body if @resp %>` to `<%= @venues %>` and re-run our search, and we can see the venues are now represented as an `Array` of `Hash`es that we can further parse.
 
 We'll look at the documentation again and decide what fields we want, and come up with something like this:
 
@@ -281,4 +281,4 @@ We've seen how to use Faraday to consume the Foursquare API from within our Rail
 
 ![winston happy](http://i.giphy.com/l2JIdnF6aJnAqzDgY.gif)
 
-<p class='util--hide'>View <a href='https://learn.co/lessons/apis-and-faraday-reading'>Hitting APIs with Faraday</a> on Learn.co and start learning to code for free.</p>
+<p class='util--hide'>View <a href='https://learn.co/lessons/apis-and-faraday-reading' title='APIs and Faraday'>APIs and Faraday</a> on Learn.co and start learning to code for free.</p>
