@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+{
+  "meta": {
+    "code": 400,
+    "errorType": "param_error",
+    "errorDetail": "Must provide parameter ll",
+    "requestId": "56c0cccd498e39675a357932"
+  },
+  "response": {}
+}
