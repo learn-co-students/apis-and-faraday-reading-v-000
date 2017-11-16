@@ -16,4 +16,4 @@
 !/log/.keep
 /tmp
 
-/app/controllers/searches_controller
+/app/controllers/searches_controller.rb
