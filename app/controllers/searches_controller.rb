@@ -3,5 +3,25 @@ class SearchesController < ApplicationController
   end
 
   def foursquare
+     @resp = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
+      req.params['client_id'] = 'PRJHK51NT2VZQHRPASFQLYOHHNZ4RWV0OUE04PYJMGPU03UR'
+      req.params['client_secret'] = 'JGIINONEMWBYNIJXWWYCSMUSFNY20F1GR2SMCCE3Z3OH2LAB'
+      req.params['v'] = 20160201
+      req.params['near'] = params[:zipcode]
+      req.params['query'] = 'coffee shop'
+    end
+
+    body = JSON.parse(@resp.body)
+    if @resp.success?
+       @venues = body["response"]["venues"]
+    else
+       @error = body["meta"]["errorDetail"]
+    end
+
+    rescue Faraday::ConnectionFailed
+      @error = "There was a timeout. Please try again."
+    end
+    
+    render 'search'
   end
 end
