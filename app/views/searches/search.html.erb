@@ -1,6 +1,13 @@
-<h1>Search for Coffee Shops Near Me</h1>
-<%= form_tag '/search' do %>
-  <%= label_tag :zipcode %>
-  <%= text_field_tag :zipcode %>
-  <%= submit_tag "Search!" %>
-<% end %>
+<div>
+  <% if @venues %>
+    <ul>
+    <% @venues.each do |venue| %>
+      <li>
+        <%= venue["name"] %><br>
+        <%= venue["location"]["address"] %><br>
+        Checkins: <%= venue["stats"]["checkinsCount"] %>
+      </li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
