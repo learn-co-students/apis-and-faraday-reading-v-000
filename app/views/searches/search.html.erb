@@ -2,5 +2,25 @@
 <%= form_tag '/search' do %>
   <%= label_tag :zipcode %>
   <%= text_field_tag :zipcode %>
+  <%= label_tag :query %>
+  <%= text_field_tag :query %>  
   <%= submit_tag "Search!" %>
 <% end %>
+<hr>
+<div>
+  <% if @error %>
+  	<p>Error with your query: "<%= @error %>"</p>
+  <% elsif @venues %>
+    <h2>Found for "<%= @query %>" at zipcode: <%= @zipcode %></h2>
+    <ol>
+    <% @venues.each do |venue| %>
+      <li>
+        <h4><a href="<%= venue["url"] %>"><%= venue["name"] %></a></h4>
+        <p><%= venue["contact"] %></p>
+        <p><%= venue["location"]["address"] %></p>
+        <p>Checkins: <%= venue["stats"]["checkinsCount"] %></p>
+      </li>
+    <% end %>
+    </ol>
+  <% end %>
+</div>
