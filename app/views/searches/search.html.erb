@@ -1,8 +1,19 @@
 <h1>Search for Coffee Shops Near Me</h1>
+
 <%= form_tag '/search' do %>
+	<p>Enter
   <%= label_tag :zipcode %>
-  <%= text_field_tag :zipcode %>
-  <%= submit_tag "Search!" %>
+  <%= text_field_tag :zipcode %></p>
+
+	<p>Enter 
+	<%= label_tag :radius %>
+  <%= number_field_tag :radius %></p>
+
+	<p>Enter 
+	<%= label_tag :query %>
+  <%= text_field_tag :query %></p>
+
+	<%= submit_tag "Search!" %>
 <% end %>
 
 
