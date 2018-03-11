@@ -21,9 +21,9 @@ class SearchesController < ApplicationController
 			req.params['v'] = '20160201'
 			req.params['near'] = params[:zipcode]
 			req.params['query'] = params[:query]
-			req.params['venuePhotos'] = 1
+			# req.params['venuePhotos'] = 1
 			# req.params['radius'] = params["radius"].to_i
-			# req.options.timeout = 0
+			req.options.timeout = 0
 		end
 		
 		body = JSON.parse(@resp1.body) 
