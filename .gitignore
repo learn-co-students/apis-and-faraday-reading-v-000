@@ -16,4 +16,5 @@
 !/log/.keep
 /tmp
 .env
-secrets.yml
+config/secrets.yml
+config/secrets1.yml
