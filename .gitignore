@@ -17,4 +17,3 @@
 /tmp
 .env
 config/secrets.yml
-config/secrets1.yml
