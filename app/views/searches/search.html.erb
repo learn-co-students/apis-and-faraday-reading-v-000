@@ -1,6 +1,34 @@
+<style>
+  #error {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+  }
+</style>
+
 <h1>Search for Coffee Shops Near Me</h1>
 <%= form_tag '/search' do %>
   <%= label_tag :zipcode %>
   <%= text_field_tag :zipcode %>
   <%= submit_tag "Search!" %>
 <% end %>
+<br><br>
+
+<div>
+  <% if @error %>
+    <p id="error"><%= @error %></p>
+  <% elsif @venues %>
+  <ul>
+    <% @venues.each do |venue| %>
+      <li>
+        <%= venue["name"] %><br>
+        <%= venue["location"]["address"] %><br>
+        <%= venue["location"]["city"] %>
+        <%= venue["location"]["state"] %>
+        <%= venue["location"]["postalCode"] %><br>
+        Checkins: <%= venue["stats"]["checkinsCount"] %>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
