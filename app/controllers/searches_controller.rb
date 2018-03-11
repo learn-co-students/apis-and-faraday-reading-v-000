@@ -1,33 +1,26 @@
 class SearchesController < ApplicationController
 	
-
-	CLIENT_ID = 'BJ43KLAHMKUYVNKPJGYUOJSP1EBIKRIDUYTG10UPVTB1JCZC'
-	CLIENT_SECRET = 'BGQB4MZWRAUYF5VY0V5AZVLDCVP1SIBXJNU1IXX3BZNFPEON'
-
-
-  def search
+	def search
   end
 
 	def foursquare
-		
-# raise params.inspect
-
+	
 # https://api.foursquare.com/v2/venues/search?client_id=BJ43KLAHMKUYVNKPJGYUOJSP1EBIKRIDUYTG10UPVTB1JCZC&client_secret=BGQB4MZWRAUYF5VY0V5AZVLDCVP1SIBXJNU1IXX3BZNFPEON&v=20160201&near=03110&query=bagel&radius=900
 
 	  begin
 		@resp1 = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
-			req.params['client_id'] = CLIENT_ID
-			req.params['client_secret'] = CLIENT_SECRET
+			req.params['client_id'] = ENV["FS_CLIENT_ID"]
+			req.params['client_secret'] = ENV["FS_CLIENT_SECRET"]
 			req.params['v'] = '20160201'
 			req.params['near'] = params[:zipcode]
 			req.params['query'] = params[:query]
 			# req.params['venuePhotos'] = 1
 			# req.params['radius'] = params["radius"].to_i
-			req.options.timeout = 0
+			# req.options.timeout = 100000
 		end
 		
 		body = JSON.parse(@resp1.body) 
-binding.pry
+# binding.pry
 		if @resp1.success?
 			@venues = body["response"]["venues"]
 		else
