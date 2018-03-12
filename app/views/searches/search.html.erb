@@ -6,10 +6,6 @@
   <%= text_field_tag :zipcode %></p>
 
 	<p>Enter 
-	<%= label_tag :radius %>
-  <%= number_field_tag :radius %></p>
-
-	<p>Enter 
 	<%= label_tag :query %>
   <%= text_field_tag :query %></p>
 
@@ -27,10 +23,30 @@
         <%= venue["name"] %><br>
         <%= venue["location"]["address"] %><br>
         <%= venue["location"]["city"] %>, <%= venue["location"]["state"] %> <%= venue["location"]["postalCode"] %><br> Contact: <%= venue["contact"]["formattedPhone"] %><br>
-        Checkins: <%= venue["stats"]["checkinsCount"] %>
+				Checkins: <%= venue["stats"]["checkinsCount"] %>
+				<br/>
+				<%= link_to "Get venue details", venue_details_path(venue["id"]), :method => "get" %>
+				<hr />
+				<br/>
+				<%= link_to "Get venue photos", venue_photos_path(venue["id"]), :method => "get"  %>
+				<hr />
       </li>
     <% end %>
     </ul>
+  <% end %>
+</div>
+<hr />
+
+<div>
+  <% if @venue_details %>
+			<%= render partial: 'details', locals: {venue_details: @venue_details} %>
+  <% end %>
+</div>
+<hr />
+
+<div>
+  <% if @venue_photos %>
+			<%= render partial: 'photos', locals: {venue_photos: @venue_photos} %>
   <% end %>
 </div>
  

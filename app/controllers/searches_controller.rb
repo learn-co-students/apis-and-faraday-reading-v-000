@@ -4,22 +4,16 @@ class SearchesController < ApplicationController
   end
 
 	def foursquare
-	
 	  begin
-		@resp1 = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
+		response = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
 			req.params['client_id'] = ENV["FS_CLIENT_ID"]
 			req.params['client_secret'] = ENV["FS_CLIENT_SECRET"]
 			req.params['v'] = '20160201'
 			req.params['near'] = params[:zipcode]
 			req.params['query'] = params[:query]
-			# req.params['venuePhotos'] = 1
-			# req.params['radius'] = '500'
-			# req.options.timeout = 10
 		end
-		
-		body = JSON.parse(@resp1.body) 
-# binding.pry
-		if @resp1.success?
+		body = JSON.parse(response.body) 
+		if response.success?
 			@venues = body["response"]["venues"]
 		else
 			@error = body["meta"]["errorDetail"]
@@ -32,19 +26,21 @@ class SearchesController < ApplicationController
 end
 
 
-def venue_detail(id)
-	 url = https://api.foursquare.com/v2/venues/"#{id}"
+def venue_details
+	id = params['format']
+	url = 'https://api.foursquare.com/v2/venues/' + "#{id}"
 	 begin
-		@resp2 = Faraday.get url do |req|
-			req.params['client_id'] = ENV["FS_CLIENT_ID"]
+		response = Faraday.get url do |req|
+ 			req.params['client_id'] = ENV["FS_CLIENT_ID"]
 			req.params['client_secret'] = ENV["FS_CLIENT_SECRET"]
 			req.params['v'] = '20160201'
-
 		end
-		body = JSON.parse(@resp2.body) 
-		if @resp2.success?
-			@venue_photos = [] # body["response"]["venues"]
-			binding.pry
+		body = JSON.parse(response.body)
+		if response.success?
+			@venue_details = {
+				address: body['response']['venue']['location']['formattedAddress'].join,
+				categories: body['response']['venue']['categories'][0]['name']
+			}
 		else
 			@error = body["meta"]["errorDetail"]
 		end
@@ -54,19 +50,23 @@ def venue_detail(id)
 		render 'search'
 	end
 
-	def photos(id)
-	 url = https://api.foursquare.com/v2/venues/"#{id}"/photos
-	 begin
-		@resp2 = Faraday.get url do |req|
+def venue_photos
+	id = params['format']
+	url = 'https://api.foursquare.com/v2/venues/' + "#{id}" + '/photos'
+	begin
+		response = Faraday.get url do |req|
 			req.params['client_id'] = ENV["FS_CLIENT_ID"]
 			req.params['client_secret'] = ENV["FS_CLIENT_SECRET"]
 			req.params['v'] = '20160201'
-
 		end
-		body = JSON.parse(@resp2.body) 
-		if @resp2.success?
-			@venue_photos = [] # body["response"]["venues"]
-			binding.pry
+
+		if response.success?
+			body = JSON.parse(response.body)
+			@venue_photos = []
+			body['response']['photos']['items'].each do |photo|
+				assembled_photo = photo['prefix'] + '200x400' + photo['suffix'] 
+				@venue_photos << assembled_photo
+			end
 		else
 			@error = body["meta"]["errorDetail"]
 		end
