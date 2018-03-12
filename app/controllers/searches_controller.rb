@@ -11,6 +11,7 @@ class SearchesController < ApplicationController
 			req.params['v'] = '20160201'
 			req.params['near'] = params[:zipcode]
 			req.params['query'] = params[:query]
+			@req = req
 		end
 		body = JSON.parse(response.body) 
 		if response.success?
