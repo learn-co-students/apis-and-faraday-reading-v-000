@@ -4,6 +4,8 @@ class SearchesController < ApplicationController
   end
 
 	def foursquare
+binding.pry
+
 	  begin
 		response = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
 			req.params['client_id'] = ENV["FS_CLIENT_ID"]
@@ -12,6 +14,9 @@ class SearchesController < ApplicationController
 			req.params['near'] = params[:zipcode]
 			req.params['query'] = params[:query]
 			@req = req
+			puts "---------------------------"
+			puts '@req' + "#{@req}"
+			puts "---------------------------"
 		end
 		body = JSON.parse(response.body) 
 		if response.success?
