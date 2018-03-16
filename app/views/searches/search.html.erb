@@ -1,6 +1,28 @@
 <h1>Search for Coffee Shops Near Me</h1>
+
 <%= form_tag '/search' do %>
-  <%= label_tag :zipcode %>
+  <%= label_tag :zipcode, 'Zipcode:' %>
   <%= text_field_tag :zipcode %>
   <%= submit_tag "Search!" %>
 <% end %>
+
+<div id="results">
+  <% if @error %>
+    <h3>Error</h3>
+    <% if @error.class == Hash %>
+      <p><strong>Status <%= @error["code"] %>:</strong> <%= @error["errorDetail"] %></p>
+    <% else %>
+      <p><%= @error %></p>
+    <% end %>
+  <% elsif @venues %>
+    <ul>
+      <% @venues.each do |venue| %>
+        <li>
+          <%= venue["name"] %><br>
+          <%= venue["location"]["address"] %>, <%= venue["location"]["city"] %>, <%= venue["location"]["state"] %><br>
+          Checkins: <%= venue["stats"]["checkinsCount"] %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
