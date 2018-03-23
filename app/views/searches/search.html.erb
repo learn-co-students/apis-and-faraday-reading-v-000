@@ -4,3 +4,15 @@
   <%= text_field_tag :zipcode %>
   <%= submit_tag "Search!" %>
 <% end %>
+
+<div>
+  <% if @error %>
+    <p> <%= @error %> </p>
+  <% elsif %>
+  <ul>
+    <% @venues.each do |venue| %>
+    <li> <%= venue["name"] %> </li>
+  <% end %>
+  </ul>
+  <% end %>
+</div>
