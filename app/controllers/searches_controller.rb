@@ -6,8 +6,8 @@ class SearchesController < ApplicationController
     #make request to API endpoint
     @resp = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
       #Faraday allows us to pass block to get method and add any parameters via a hash of params
-      req.params['client_id'] = 'PJDSWHOQ3ET3SPZ5H0VHGB5MJ4FND5CVIZ1KYKMN0B05VCDH'
-      req.params['client_secret'] = 'KZLDOJVMNYZTMR0STJFVUYB5G1LACOYT0JI3JDIWGVDL3MZO'
+      req.params['client_id'] = ''
+      req.params['client_secret'] = ''
       req.params['v'] = '20160201'
       req.params['near'] = params[:zipcode]
       req.params['query'] = 'coffee shop'
