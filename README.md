@@ -60,6 +60,8 @@ Okay. Anticlimactic.
 
 ![jess welp](http://i.giphy.com/5q2TF9Kz4g6iI.gif)
 
+### REMOVE ALL SENSITIVE INFORMATION i.e. CLIENT_ID and CLIENT_SECRET BEFORE SUBMITTING
+
 ### The Response Object
 
 When we're working with Faraday, any time we make a *request* (such as `Faraday.get`), the returned object represents a *response*. The two most interesting parts of the response object are the `body`, which is where the server response, such as error messages or JSON results will be, and the `status`, which is the [HTTP code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) the server returns from the request.
@@ -154,6 +156,8 @@ We'll look at the documentation again and decide what fields we want, and come u
 We're now successfully using the Foursquare API to get coffee shops near the user!
 
 ![schmidt pizza](http://i.giphy.com/OJ8hVSLYbpQ08.gif)
+
+### REMOVE ALL SENSITIVE INFORMATION i.e. CLIENT_ID and CLIENT_SECRET BEFORE SUBMITTING
 
 ### Handling Errors
 
@@ -274,6 +278,8 @@ Luckily, we can also force a timeout by setting the request's `timeout` value. N
 If we run our search again, we should see our timeout error.
 
 Now let's delete that `req.options.timeout = 0` line, because we would never want to actually force a timeout on every request.  Now we have a Foursquare API search that successfully finds coffee shops near the user, handles response errors, and guards against timeouts!
+
+### REMOVE ALL SENSITIVE INFORMATION i.e. CLIENT_ID and CLIENT_SECRET BEFORE SUBMITTING 
 
 ## Summary
 
