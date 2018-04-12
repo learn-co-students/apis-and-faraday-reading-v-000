@@ -29,6 +29,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# An HTTP client library that makes it easy to talk to an API
+gem 'faraday'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
