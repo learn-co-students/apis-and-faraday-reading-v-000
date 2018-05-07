@@ -4,6 +4,7 @@ class SearchesController < ApplicationController
 
   def foursquare
 <<<<<<< HEAD
+<<<<<<< HEAD
     begin
       @resp = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
         req.params['client_id'] = 'ID'
@@ -26,6 +27,8 @@ class SearchesController < ApplicationController
 
     render 'search'
 
+=======
+>>>>>>> parent of 0a41a21... Done.
 =======
 >>>>>>> parent of 0a41a21... Done.
   end
