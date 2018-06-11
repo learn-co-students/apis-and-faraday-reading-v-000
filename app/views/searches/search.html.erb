@@ -1,6 +1,30 @@
 <h1>Search for Coffee Shops Near Me</h1>
+<% if @error %>
+  <div class="error">
+    Error! <%= @error %>
+  </div>
+<% end %>
+
 <%= form_tag '/search' do %>
   <%= label_tag :zipcode %>
   <%= text_field_tag :zipcode %>
   <%= submit_tag "Search!" %>
+<% end %>
+
+<h2>Response</h2>
+
+<% if @venues_array %>
+  <div class="listings">
+    <% @venues_array.each do |venue| %>
+      <div class="venue-card">
+        Name: <%= venue["name"] %>
+        <br>
+        Address: <%= venue["location"]["address"] %>
+        <br>
+        Zip: <%= venue["location"]["postalCode"] %>
+        <br>
+      </div>
+      <br>
+    <% end %>
+  </div>
 <% end %>
