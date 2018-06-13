@@ -45,3 +45,9 @@ group :development do
   gem 'spring'
 end
 
+
+# Added at 2018-06-13 17:56:36 +0100 by roberthughes:
+gem "faraday", "~> 0.15.2"
+
+# Added at 2018-06-13 18:07:07 +0100 by roberthughes:
+gem "dotenv-rails", "~> 2.4"
