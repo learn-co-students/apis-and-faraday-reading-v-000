@@ -52,8 +52,11 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.6.0)
+<<<<<<< HEAD
     faraday (0.15.2)
       multipart-post (>= 1.2, < 3)
+=======
+>>>>>>> 8eb467791c45e1193f9288791d1d71f143bca4c6
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -73,7 +76,6 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
-    multipart-post (2.0.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     rack (1.6.4)
@@ -147,7 +149,6 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
-  faraday
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.5)
@@ -160,4 +161,8 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
+<<<<<<< HEAD
    1.16.4
+=======
+   1.16.3
+>>>>>>> 8eb467791c45e1193f9288791d1d71f143bca4c6
