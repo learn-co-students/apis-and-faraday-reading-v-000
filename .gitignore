@@ -15,3 +15,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Hide our private keys, etc
+.env
