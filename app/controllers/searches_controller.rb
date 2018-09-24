@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+  # ADD CLIENT KEY AND SECRETS FOR FOURSQUARE CHECK YOUR NOTES
+  
   def search
   end
 
@@ -8,8 +10,8 @@ class SearchesController < ApplicationController
       @resp = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
         #we set all the required parameters in a hash object
         #my client id and secret from foursquare.com/developers/apps
-        req.params['client_id'] = 'F0SGI1XUSGGQT0SQSA1IL11YWZDYVULBB5UWG10344QMLBKN'
-        req.params['client_secret'] = 'F0ELWDIRJUJI4J3LBIQFAP4P320UBVV2HTD0EKETTL1BMBDQ'
+        req.params['client_id'] = ''
+        req.params['client_secret'] = ''
         req.params['v'] = '20160201'
         req.params['near'] = params[:zipcode]
         req.params['query'] = 'coffee shop'
