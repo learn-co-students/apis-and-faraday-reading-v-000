@@ -46,3 +46,4 @@ group :development do
 end
 
 gem 'faraday'
+gem 'dotenv-rails'
