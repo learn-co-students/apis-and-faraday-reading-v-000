@@ -45,3 +45,5 @@ group :development do
   gem 'spring'
 end
 
+gem 'faraday'
+gem 'dotenv-rails'
