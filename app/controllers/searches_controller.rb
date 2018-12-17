@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
   def search
   end
-
+hello
     def foursquare
     Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
       req.params['client_id'] = client_id
