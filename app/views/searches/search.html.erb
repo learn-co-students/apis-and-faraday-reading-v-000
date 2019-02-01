@@ -8,7 +8,7 @@
   <%#= @resp.body if @resp %>
   <% if @error %>
     <p><%= @error %></p>
-  <% elsif venues %>
+  <% elsif @venues %>
     <ul>
     <% @venues.each do |venue| %>
       <li>
