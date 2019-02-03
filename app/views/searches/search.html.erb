@@ -1,7 +1,9 @@
-<h1>Search for Coffee Shops Near Me</h1>
+<h1>Search for Anything Near Me</h1>
 <%= form_tag '/search' do %>
   <%= label_tag :zipcode %>
   <%= text_field_tag :zipcode %>
+  <%= label_tag :query %>
+  <%= text_field_tag :query %>
   <%= submit_tag "Search!" %>
 <% end %>
 <div>
@@ -13,6 +15,9 @@
       <li>
         <%= venue["name"] %><br>
         <%= venue["location"]["address"] %><br>
+        <%= venue["location"]["lat"] %><br>
+        <%= venue["location"]["lng"] %><br>
+
       </li>
     <% end %>
     </ul>
