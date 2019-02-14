@@ -6,7 +6,9 @@
 <% end %>
 
 <div>
-  <% if @venues %>
+ <%if @error %>
+ <p><%= @error %>%></p>
+  <% elsif @venues %>
    <ul>
    <% @venues.each do |venue| %>
     <li>
@@ -14,6 +16,7 @@
        <%= venue["location"]["address"]%><br>
        Checkins: <%= venue["stats"]["checkinsCount"]%>
     </li>
+    <% end %>
    </ul>
    <% end %>
 </div>

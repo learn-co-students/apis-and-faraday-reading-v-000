@@ -13,10 +13,15 @@ class SearchesController < ApplicationController
       req.params['near'] = params[:zipcode]
       req.params['query'] = 'coffee shop'
    end
-   body_hash = JSON.parse(@resp.body)
-   @venues = body_hash["response"]["venues"]
-   # response and venues are in a hash
-   render 'search'
-  end
 
-end
+  
+      body_hash = JSON.parse(@resp.body)
+      if @resp.success?
+      @venues = body_hash["response"]["venues"]
+      else
+        @error = body["meta"]["errorDetail"]
+      end      
+      render 'search'
+  
+
+end 
