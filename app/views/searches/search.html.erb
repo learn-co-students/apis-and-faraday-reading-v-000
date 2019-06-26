@@ -3,4 +3,16 @@
   <%= label_tag :zipcode %>
   <%= text_field_tag :zipcode %>
   <%= submit_tag "Search!" %>
+  <div class="venues">
+    <% if @error %>
+      <p><%= @error %></p>
+    <% elsif @venues %>
+    <ul>
+      <% @venues.each do |venue| %>
+      <li><p>Name: <%= venue["name"] %><br>
+         Location: <%= venue["location"]["address"] %>, <%= venue["location"]["city"] %>, <%= venue["location"]["state"] %></p></li>
+         <% end %>
+       </ul>
+       <% end %>
+    </div>
 <% end %>
