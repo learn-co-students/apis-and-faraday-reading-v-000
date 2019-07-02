@@ -36,8 +36,8 @@ Our `searches/search.html.erb` is already set up to post a `:zipcode` param to o
 # searches_controller.rb
   def foursquare
     Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
-      req.params['client_id'] = client_id
-      req.params['client_secret'] = client_secret
+      req.params['client_id'] = 'client_id'
+      req.params['client_secret'] = 'client_secret'
       req.params['v'] = '20160201'
       req.params['near'] = params[:zipcode]
       req.params['query'] = 'coffee shop'
@@ -60,7 +60,7 @@ Okay. Anticlimactic.
 
 ![jess welp](http://i.giphy.com/5q2TF9Kz4g6iI.gif)
 
-### REMOVE ALL SENSITIVE INFORMATION i.e. CLIENT_ID and CLIENT_SECRET BEFORE SUBMITTING
+**Important:** REMOVE ALL SENSITIVE INFORMATION i.e. `CLIENT_ID` and `CLIENT_SECRET` BEFORE SUBMITTING
 
 ### The Response Object
 
@@ -72,8 +72,8 @@ So let's make a change and get that response into a variable we can use:
 # searches_controller.rb
   def foursquare
     @resp = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
-      req.params['client_id'] = client_id
-      req.params['client_secret'] = client_secret
+      req.params['client_id'] = 'client_id'
+      req.params['client_secret'] = 'client_secret'
       req.params['v'] = '20160201'
       req.params['near'] = params[:zipcode]
       req.params['query'] = 'coffee shop'
@@ -117,8 +117,8 @@ So lets get those `venues` out of this JSON object and into a thing we can use i
 # searches_controller.rb
 # ...
     @resp = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
-      req.params['client_id'] = client_id
-      req.params['client_secret'] = client_secret
+      req.params['client_id'] = 'client_id'
+      req.params['client_secret'] = 'client_secret'
       req.params['v'] = '20160201'
       req.params['near'] = params[:zipcode]
       req.params['query'] = 'coffee shop'
@@ -157,7 +157,7 @@ We're now successfully using the Foursquare API to get coffee shops near the use
 
 ![schmidt pizza](http://i.giphy.com/OJ8hVSLYbpQ08.gif)
 
-### REMOVE ALL SENSITIVE INFORMATION i.e. CLIENT_ID and CLIENT_SECRET BEFORE SUBMITTING
+**Important:** REMOVE ALL SENSITIVE INFORMATION i.e. `CLIENT_ID` and `CLIENT_SECRET` BEFORE SUBMITTING
 
 ### Handling Errors
 
@@ -196,8 +196,8 @@ Using this information, we can add some error handling to our application.
 ```ruby
 # searches_controller.rb
   @resp = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
-    req.params['client_id'] = client_id
-    req.params['client_secret'] = client_secret
+    req.params['client_id'] = 'client_id'
+    req.params['client_secret'] = 'client_secret'
     req.params['v'] = '20160201'
     req.params['near'] = params[:zipcode]
     req.params['query'] = 'coffee shop'
@@ -255,8 +255,8 @@ Luckily, we can also force a timeout by setting the request's `timeout` value. N
 # ...
   begin
     @resp = Faraday.get 'https://api.foursquare.com/v2/venues/search' do |req|
-        req.params['client_id'] = client_id
-        req.params['client_secret'] = client_secret
+        req.params['client_id'] = 'client_id'
+        req.params['client_secret'] = 'client_secret'
         req.params['v'] = '20160201'
         req.params['near'] = params[:zipcode]
         req.params['query'] = 'coffee shop'
@@ -279,7 +279,7 @@ If we run our search again, we should see our timeout error.
 
 Now let's delete that `req.options.timeout = 0` line, because we would never want to actually force a timeout on every request.  Now we have a Foursquare API search that successfully finds coffee shops near the user, handles response errors, and guards against timeouts!
 
-### REMOVE ALL SENSITIVE INFORMATION i.e. CLIENT_ID and CLIENT_SECRET BEFORE SUBMITTING 
+**Important:** REMOVE ALL SENSITIVE INFORMATION i.e. `CLIENT_ID` and `CLIENT_SECRET` BEFORE SUBMITTING
 
 ## Summary
 
