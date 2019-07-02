@@ -60,7 +60,7 @@ Okay. Anticlimactic.
 
 ![jess welp](http://i.giphy.com/5q2TF9Kz4g6iI.gif)
 
-**Important:** REMOVE ALL SENSITIVE INFORMATION i.e. `CLIENT_ID` and `CLIENT_SECRET` BEFORE SUBMITTING
+**IMPORTANT:** _REMOVE ALL SENSITIVE INFORMATION i.e. `CLIENT_ID` and `CLIENT_SECRET` BEFORE SUBMITTING_
 
 ### The Response Object
 
@@ -167,7 +167,7 @@ We're now successfully using the Foursquare API to get coffee shops near the use
 
 ![schmidt pizza](http://i.giphy.com/OJ8hVSLYbpQ08.gif)
 
-**Important:** REMOVE ALL SENSITIVE INFORMATION i.e. `CLIENT_ID` and `CLIENT_SECRET` BEFORE SUBMITTING
+**IMPORTANT:** _REMOVE ALL SENSITIVE INFORMATION i.e. `CLIENT_ID` and `CLIENT_SECRET` BEFORE SUBMITTING_
 
 ### Handling Errors
 
@@ -289,7 +289,7 @@ If we run our search again, we should see our timeout error.
 
 Now let's delete that `req.options.timeout = 0` line, because we would never want to actually force a timeout on every request.  Now we have a Foursquare API search that successfully finds coffee shops near the user, handles response errors, and guards against timeouts!
 
-**Important:** REMOVE ALL SENSITIVE INFORMATION i.e. `CLIENT_ID` and `CLIENT_SECRET` BEFORE SUBMITTING
+**IMPORTANT:** _REMOVE ALL SENSITIVE INFORMATION i.e. `CLIENT_ID` and `CLIENT_SECRET` BEFORE SUBMITTING_
 
 ## Summary
 
