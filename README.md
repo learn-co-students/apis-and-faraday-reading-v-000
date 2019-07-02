@@ -82,7 +82,17 @@ So let's make a change and get that response into a variable we can use:
   end
 ```
 
-And in our template, let's take a look at that response `body`.
+In our search template, let's add these lines:
+
+```erb
+# views/searches/search.html.erb
+
+<div>
+  <%= @resp.body if @resp %>
+</div>
+```
+
+Now let's take a look at that response `body`.
 
 ```erb
 # views/searches/search.html.erb
