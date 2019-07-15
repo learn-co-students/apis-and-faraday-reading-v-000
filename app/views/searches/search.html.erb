@@ -6,7 +6,9 @@
 <% end %>
 
 <div>
-  <% if @venues %>
+  <% if @error %>
+    <p><%= @error %></p>
+  <% elsif @venues %>
     <ul>
     <% @venues.each do |venue| %>
       <li>
@@ -18,3 +20,4 @@
     </ul>
   <% end %>
 </div>
+
