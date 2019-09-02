@@ -4,3 +4,18 @@
   <%= text_field_tag :zipcode %>
   <%= submit_tag "Search!" %>
 <% end %>
+
+<div>
+  <% if @venues%>
+    <% @venues.each do |v| %>
+      <%= v['name']%> <br>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <% if @error %>
+    Something's gone horribly wrong! <br>
+    <%= @error %>
+  <% end %>
+</div>
